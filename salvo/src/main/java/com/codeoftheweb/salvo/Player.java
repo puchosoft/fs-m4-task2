@@ -12,43 +12,43 @@ import static java.util.stream.Collectors.toList;
 @Entity
 public class Player {
 
-    // Relacion con la tabla "gamePlayers"
-    @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
-    Set<GamePlayer> gamePlayers;
+  // Relacion con la tabla "gamePlayers"
+  @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
+  Set<GamePlayer> gamePlayers;
 
-    // ID automatico para la tabla "players"
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-    private long id;
-    private String email;
+  // ID automatico para la tabla "players"
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+  @GenericGenerator(name = "native", strategy = "native")
+  private long id;
+  private String email;
 
-    public Player() {
-    }
+  public Player() {
+  }
 
-    public Player(String email) {
-        this.email = email;
-    }
+  public Player(String email) {
+    this.email = email;
+  }
 
-    public long getId() {
-        return this.id;
-    }
+  public long getId() {
+    return this.id;
+  }
 
-    public String getEmail() {
-        return this.email;
-    }
+  public String getEmail() {
+    return this.email;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public void addGamePlayer(GamePlayer gamePlayer) {
-        gamePlayer.setPlayer(this);
-        gamePlayers.add(gamePlayer);
-    }
+  public void addGamePlayer(GamePlayer gamePlayer) {
+    gamePlayer.setPlayer(this);
+    gamePlayers.add(gamePlayer);
+  }
 
-    @JsonIgnore
-    public List<Game> getGames() {
-        return gamePlayers.stream().map(gp -> gp.getGame()).collect(toList());
-    }
+  @JsonIgnore
+  public List<Game> getGames() {
+    return gamePlayers.stream().map(gp -> gp.getGame()).collect(toList());
+  }
 }

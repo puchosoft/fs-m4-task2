@@ -8,59 +8,59 @@ import java.util.Date;
 @Entity
 public class GamePlayer {
 
-    // ID automatico para la tabla "gamePlayers"
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-    private long id;
+  // ID automatico para la tabla "gamePlayers"
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+  @GenericGenerator(name = "native", strategy = "native")
+  private long id;
 
-    // Relacion con la tabla "games"
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "gameID")
-    private Game game;
+  // Relacion con la tabla "games"
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "gameID")
+  private Game game;
 
-    // Relacion con la tabla "players"
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "playerID")
-    private Player player;
+  // Relacion con la tabla "players"
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "playerID")
+  private Player player;
 
-    private Date joinDate;
+  private Date joinDate;
 
-    public GamePlayer() {
-        joinDate = new Date();
-    }
+  public GamePlayer() {
+    joinDate = new Date();
+  }
 
-    public GamePlayer(Game game, Player player) {
-        this.game = game;
-        this.player = player;
-        joinDate = new Date();
-    }
+  public GamePlayer(Game game, Player player) {
+    this.game = game;
+    this.player = player;
+    joinDate = new Date();
+  }
 
-    public long getId() {
-        return id;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public Game getGame() {
-        return game;
-    }
+  public Game getGame() {
+    return game;
+  }
 
-    public void setGame(Game game) {
-        this.game = game;
-    }
+  public void setGame(Game game) {
+    this.game = game;
+  }
 
-    public Player getPlayer() {
-        return player;
-    }
+  public Player getPlayer() {
+    return player;
+  }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
+  public void setPlayer(Player player) {
+    this.player = player;
+  }
 
-    public Date getJoinDate() {
-        return joinDate;
-    }
+  public Date getJoinDate() {
+    return joinDate;
+  }
 
-    public void setJoinDate(Date joinDate) {
-        this.joinDate = joinDate;
-    }
+  public void setJoinDate(Date joinDate) {
+    this.joinDate = joinDate;
+  }
 }
