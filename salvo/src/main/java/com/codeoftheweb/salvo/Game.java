@@ -32,6 +32,10 @@ public class Game {
         this.creationDate = creationDate;
     }
 
+    public long getId(){
+        return this.id;
+    }
+
     public void addGamePlayer(GamePlayer gamePlayer) {
         gamePlayer.setGame(this);
         gamePlayers.add(gamePlayer);
