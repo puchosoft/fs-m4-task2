@@ -1,35 +1,43 @@
 package com.codeoftheweb.salvo;
 
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class GamePlayer {
 
+    // ID automatico para la tabla "gamePlayers"
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
+    // Relacion con la tabla "games"
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="gameID")
+    @JoinColumn(name = "gameID")
     private Game game;
 
+    // Relacion con la tabla "players"
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="playerID")
+    @JoinColumn(name = "playerID")
     private Player player;
 
     private Date joinDate;
 
-    public GamePlayer(){
+    public GamePlayer() {
         joinDate = new Date();
     }
 
-    public GamePlayer(Game game, Player player){
+    public GamePlayer(Game game, Player player) {
         this.game = game;
         this.player = player;
         joinDate = new Date();
+    }
+
+    public long getId() {
+        return id;
     }
 
     public Game getGame() {
