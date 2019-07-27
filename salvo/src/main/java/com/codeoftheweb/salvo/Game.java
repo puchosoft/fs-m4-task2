@@ -1,47 +1,43 @@
 package com.codeoftheweb.salvo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import static java.util.stream.Collectors.toList;
 
-
 @Entity
-public class Player {
+public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    private String email;
+    private Date creationDate;
 
-    @OneToMany(mappedBy="player", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="game", fetch=FetchType.EAGER)
     Set<GamePlayer> gamePlayers;
 
-    public Player(){}
-
-    public Player(String email){
-        this.email = email;
+    public Game(){
+        this.creationDate = new Date();
     }
 
-    public String getEmail(){
-        return this.email;
+    public Date getCreationDate() {
+        return this.creationDate;
     }
 
-    public void setEmail(String email){
-        this.email = email;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
     public void addGamePlayer(GamePlayer gamePlayer) {
-        gamePlayer.setPlayer(this);
+        gamePlayer.setGame(this);
         gamePlayers.add(gamePlayer);
     }
 
-    @JsonIgnore
-    public List<Game> getGames(){
-        return gamePlayers.stream().map(gp -> gp.getGame()).collect(toList());
+    public List<Player> getPlayers(){
+        return gamePlayers.stream().map(gp -> gp.getPlayer()).collect(toList());
     }
 }

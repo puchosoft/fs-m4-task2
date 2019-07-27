@@ -20,23 +20,23 @@ $(function() {
   // handler for when user clicks add person
 
   function addPlayer() {
-    var name = $("#email").val();
-    if (name) {
-      postPlayer(name);
+    var email = $("#email").val();
+    if (email) {
+      postPlayer(email);
     }
   }
 
   // code to post a new player using AJAX
   // on success, reload and display the updated data from the server
 
-  function postPlayer(userName) {
+  function postPlayer(email) {
     $.post({
       headers: {
           'Content-Type': 'application/json'
       },
       dataType: "text",
       url: "/players",
-      data: JSON.stringify({ "userName": userName })
+      data: JSON.stringify({ "email": email })
     })
     .done(function( ) {
       showOutput( "Saved -- reloading");
