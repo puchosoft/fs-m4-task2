@@ -16,12 +16,12 @@ public class GamePlayer {
 
   // Relacion con la tabla "games"
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "gameID")
+  @JoinColumn(name = "game_id")
   private Game game;
 
   // Relacion con la tabla "players"
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "playerID")
+  @JoinColumn(name = "player_id")
   private Player player;
 
   private Date joinDate;

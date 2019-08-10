@@ -4,7 +4,7 @@ $(function(){
     var li="";
     gameList.forEach(g => {
       var date = new Date(g.created).toLocaleString();
-      var players = g.gamePlayers.map(gp => gp.player.email).join(', ');
+      var players = g.gamePlayers.map(gp => gp.player.username).join(', ');
       li+='<li>'+ date + ', ' + players + '</li>';
     });
     $('#listGames').html(li);

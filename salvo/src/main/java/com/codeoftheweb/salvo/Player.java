@@ -21,25 +21,25 @@ public class Player {
   @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
   @GenericGenerator(name = "native", strategy = "native")
   private long id;
-  private String email;
+  private String username;
 
   public Player() {
   }
 
-  public Player(String email) {
-    this.email = email;
+  public Player(String username) {
+    this.username = username;
   }
 
   public long getId() {
     return this.id;
   }
 
-  public String getEmail() {
-    return this.email;
+  public String getUsername() {
+    return this.username;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public void addGamePlayer(GamePlayer gamePlayer) {
